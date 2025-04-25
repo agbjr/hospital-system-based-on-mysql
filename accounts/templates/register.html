@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            color: red;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>register</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="role">role:</label>
+            <select name="role">
+                <option value="caregiver">caregiver</option>
+                <option value="nurse">nurse</option>
+                <option value="administrator">administrator</option>
+                <option value="guardian">guardian</option>
+            </select>
+            <label for="userName">userName:</label>
+            <input type="userName" id="userName" name="userName" required>
+            <label for="password">password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">register</button>
+        </form>
+        {% for message in messages %}
+            <p class="message">{{ message }}</p >
+        {% endfor %}
+    </div>
+</body>
+</html>
